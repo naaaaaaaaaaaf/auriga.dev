@@ -1,0 +1,208 @@
+<!doctype html><html lang=ja-jp>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Freenomのドメインをメインで使うのはやめろ - Auriga.dev</title>
+<meta name=description content="なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
+経緯 こんにちは Naf です。
+みなさーん！Freenom、使ってますか〜？
+地獄に落ちろ！！！！！！！！！！  私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。
+ 
+てっきり最初はネームサーバーの問題かと思い、ConoHaの障害情報を調べたりしていたのですが、情報が出て来ず、意味不明でした。(ConoHaからLinodeにネームサーバーを変更したりしたが結果変わらず)
+ よくよく、digで名前解決をしてみると、一部のサーバーのみ名前解決ができなくなっていることに気が付きました。
+具体的に見ると、Google DNS (8.8.8.8)からは正常に引けずに、Cloudflare DNS (1.1.1.1)からは正常に引けるようになっていました。
+そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
+そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
+Qiitaで見つけた記事のように適当なドメインをdigしてみます。
+$ dig example.ga +trace ; <<>> DiG 9.16.1-Ubuntu <<>> example.ga +trace ;; global options: +cmd .	53	IN	NS	g.root-servers.net. .	53	IN	NS	h.root-servers.net. .	53	IN	NS	i.root-servers.net. .	53	IN	NS	j.root-servers.net. .	53	IN	NS	k.root-servers.net. .	53	IN	NS	l.">
+<meta name=author content>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3761835579827953" crossorigin=anonymous></script>
+<link rel="preload stylesheet" as=style href=http://example.org/app.min.css>
+<link rel="preload stylesheet" as=style href=http://example.org/an-old-hope.min.css>
+<script defer src=http://example.org/highlight.min.js onload=hljs.initHighlightingOnLoad()></script>
+<link rel=preload as=image href=http://example.org/theme.png>
+<link rel=icon href=http://example.org/favicon.ico>
+<link rel=apple-touch-icon href=http://example.org/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.90.1">
+<meta property="og:title" content="Freenomのドメインをメインで使うのはやめろ">
+<meta property="og:description" content="なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
+経緯 こんにちは Naf です。
+みなさーん！Freenom、使ってますか〜？
+地獄に落ちろ！！！！！！！！！！  私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。
+ 
+てっきり最初はネームサーバーの問題かと思い、ConoHaの障害情報を調べたりしていたのですが、情報が出て来ず、意味不明でした。(ConoHaからLinodeにネームサーバーを変更したりしたが結果変わらず)
+ よくよく、digで名前解決をしてみると、一部のサーバーのみ名前解決ができなくなっていることに気が付きました。
+具体的に見ると、Google DNS (8.8.8.8)からは正常に引けずに、Cloudflare DNS (1.1.1.1)からは正常に引けるようになっていました。
+そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
+そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
+Qiitaで見つけた記事のように適当なドメインをdigしてみます。
+$ dig example.ga +trace ; <<>> DiG 9.16.1-Ubuntu <<>> example.ga +trace ;; global options: +cmd .	53	IN	NS	g.root-servers.net. .	53	IN	NS	h.root-servers.net. .	53	IN	NS	i.root-servers.net. .	53	IN	NS	j.root-servers.net. .	53	IN	NS	k.root-servers.net. .	53	IN	NS	l.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://example.org/post/do-not-use-freenom/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-02-21T15:43:16+09:00">
+<meta property="article:modified_time" content="2022-02-21T15:43:16+09:00">
+<meta itemprop=name content="Freenomのドメインをメインで使うのはやめろ">
+<meta itemprop=description content="なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
+経緯 こんにちは Naf です。
+みなさーん！Freenom、使ってますか〜？
+地獄に落ちろ！！！！！！！！！！  私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。
+ 
+てっきり最初はネームサーバーの問題かと思い、ConoHaの障害情報を調べたりしていたのですが、情報が出て来ず、意味不明でした。(ConoHaからLinodeにネームサーバーを変更したりしたが結果変わらず)
+ よくよく、digで名前解決をしてみると、一部のサーバーのみ名前解決ができなくなっていることに気が付きました。
+具体的に見ると、Google DNS (8.8.8.8)からは正常に引けずに、Cloudflare DNS (1.1.1.1)からは正常に引けるようになっていました。
+そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
+そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
+Qiitaで見つけた記事のように適当なドメインをdigしてみます。
+$ dig example.ga +trace ; <<>> DiG 9.16.1-Ubuntu <<>> example.ga +trace ;; global options: +cmd .	53	IN	NS	g.root-servers.net. .	53	IN	NS	h.root-servers.net. .	53	IN	NS	i.root-servers.net. .	53	IN	NS	j.root-servers.net. .	53	IN	NS	k.root-servers.net. .	53	IN	NS	l."><meta itemprop=datePublished content="2022-02-21T15:43:16+09:00">
+<meta itemprop=dateModified content="2022-02-21T15:43:16+09:00">
+<meta itemprop=wordCount content="229">
+<meta itemprop=keywords content>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Freenomのドメインをメインで使うのはやめろ">
+<meta name=twitter:description content="なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
+経緯 こんにちは Naf です。
+みなさーん！Freenom、使ってますか〜？
+地獄に落ちろ！！！！！！！！！！  私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。
+ 
+てっきり最初はネームサーバーの問題かと思い、ConoHaの障害情報を調べたりしていたのですが、情報が出て来ず、意味不明でした。(ConoHaからLinodeにネームサーバーを変更したりしたが結果変わらず)
+ よくよく、digで名前解決をしてみると、一部のサーバーのみ名前解決ができなくなっていることに気が付きました。
+具体的に見ると、Google DNS (8.8.8.8)からは正常に引けずに、Cloudflare DNS (1.1.1.1)からは正常に引けるようになっていました。
+そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
+そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
+Qiitaで見つけた記事のように適当なドメインをdigしてみます。
+$ dig example.ga +trace ; <<>> DiG 9.16.1-Ubuntu <<>> example.ga +trace ;; global options: +cmd .	53	IN	NS	g.root-servers.net. .	53	IN	NS	h.root-servers.net. .	53	IN	NS	i.root-servers.net. .	53	IN	NS	j.root-servers.net. .	53	IN	NS	k.root-servers.net. .	53	IN	NS	l.">
+</head>
+<body class=not-ready data-menu=false>
+<header class=header>
+<p class=logo>
+<a class=site-name href=http://example.org/>Auriga.dev</a><a class=btn-dark></a>
+</p>
+<script>let bodyClx=document.body.classList,btnDark=document.querySelector('.btn-dark'),sysDark=window.matchMedia('(prefers-color-scheme: dark)'),darkVal=localStorage.getItem('dark'),setDark=a=>{bodyClx[a?'add':'remove']('dark'),localStorage.setItem('dark',a?'yes':'no')};setDark(darkVal?darkVal==='yes':sysDark.matches),requestAnimationFrame(()=>bodyClx.remove('not-ready')),btnDark.addEventListener('click',()=>setDark(!bodyClx.contains('dark'))),sysDark.addEventListener('change',a=>setDark(a.matches))</script>
+</header>
+<main class=main>
+<article class=post-single>
+<header class=post-title>
+<p>
+<time>Feb 21, 2022</time>
+</p>
+<h1>Freenomのドメインをメインで使うのはやめろ</h1>
+</header>
+<section class=post-content><h2 id=なにが言いたい>なにが言いたい</h2>
+<p>Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ</p>
+<h2 id=経緯>経緯</h2>
+<p>こんにちは Naf です。<br>
+みなさーん！Freenom、使ってますか〜？<br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ </p>
+<h1 id=地獄に落ちろ>地獄に落ちろ！！！！！！！！！！</h1>
+<p><figure><img src=/img/nuclear-2136244_1280-768x512.jpg>
+</figure>
+私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。<br>
+ <br>
+<iframe src=https://ap.ketsuben.red/@naf/107779939480777414/embed class=mastodon-embed style=max-width:100%;border:0 width=400 allowfullscreen></iframe>
+<script src=https://ap.ketsuben.red/embed.js async></script><br>
+ <br>
+てっきり最初はネームサーバーの問題かと思い、ConoHaの障害情報を調べたりしていたのですが、情報が出て来ず、意味不明でした。(<a href="https://www.conoha.jp/referral/?token=SS73RfQ9OKe5mhSVVXzLo.Z2TAIYBimj2xoaIEd__rKQfJwjEeU-HT0">ConoHa</a>から<a href="https://www.linode.com/?r=33483601fd2884fed84b1ac598927371f66596a8">Linode</a>にネームサーバーを変更したりしたが結果変わらず)<br>
+<figure><img src=/img/2022-02-21-171409.jpg>
+</figure>
+</p>
+<p>よくよく、digで名前解決をしてみると、一部のサーバーのみ名前解決ができなくなっていることに気が付きました。<br>
+具体的に見ると、Google DNS (8.8.8.8)からは正常に引けずに、Cloudflare DNS (1.1.1.1)からは正常に引けるようになっていました。<br>
+そこでGoogle DNSがおかしい？と思い、<a href=https://developers.google.com/speed/public-dns/cache>Google DNSのキャッシュクリア</a>をサイトにアクセスして実行してみました…が、結局改善しませんでした。</p>
+<h2 id=そういえば>そういえば</h2>
+<p>昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。<br>
+<a href=https://qiita.com/MasahitoShinoda/items/40cd312fabc6db604b39>Qiitaで見つけた記事</a>のように適当なドメインをdigしてみます。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt>$ dig example.ga +trace
+
+; &lt;&lt;&gt;&gt; DiG 9.16.1-Ubuntu &lt;&lt;&gt;&gt; example.ga +trace
+;; global options: +cmd
+.			53	IN	NS	g.root-servers.net.
+.			53	IN	NS	h.root-servers.net.
+.			53	IN	NS	i.root-servers.net.
+.			53	IN	NS	j.root-servers.net.
+.			53	IN	NS	k.root-servers.net.
+.			53	IN	NS	l.root-servers.net.
+.			53	IN	NS	m.root-servers.net.
+.			53	IN	NS	a.root-servers.net.
+.			53	IN	NS	b.root-servers.net.
+.			53	IN	NS	c.root-servers.net.
+.			53	IN	NS	d.root-servers.net.
+.			53	IN	NS	e.root-servers.net.
+.			53	IN	NS	f.root-servers.net.
+;; Received 262 bytes from 127.0.0.53#53(127.0.0.53) in 0 ms
+
+ga.			172800	IN	NS	a.ns.ga.
+ga.			172800	IN	NS	b.ns.ga.
+ga.			172800	IN	NS	c.ns.ga.
+ga.			172800	IN	NS	d.ns.ga.
+ga.			86400	IN	NSEC	gal. NS RRSIG NSEC
+ga.			86400	IN	RRSIG	NSEC 8 1 86400 20220224220000 20220211210000 9799 . IwNKC3CNRLuDyrT0wdFonFwfQL8Gl8yB2SHMys3O0cUTp9v1q6gFXB3m j25sIzPbI5mo3TqNcPeUT8Y6yGMI//OGIT07MJvkd5ipFcmn/jXu9tCJ BlY41AtHbA+pkHLTuMLJ7jvB9id9peT9BR0tuz+lxDDxG3g6UQaOBK+n enXqiySAvYXLRAzM6vfY0dpWGsR3p6UK4hgo4x3h2hQKC42mDMQH3xlX OpEVgJvIY/hF4LVygts9ZknHnaxVZJa64Gu0F5juIqyuKdN7AjWe+9Ii hnn+lFU7QxmNtj/NgI0Yw/5+7Z9AF/0LqVS7UMY3yPajSU1REGa+MAKm mZsM8g==
+couldn&#39;t get address for &#39;a.ns.ga&#39;: failure
+couldn&#39;t get address for &#39;b.ns.ga&#39;: failure
+couldn&#39;t get address for &#39;c.ns.ga&#39;: failure
+couldn&#39;t get address for &#39;d.ns.ga&#39;: failure
+dig: couldn&#39;t get address for &#39;a.ns.ga&#39;: no more
+</code></pre></div><h3 id=ハイクソー>ハイクソー</h3>
+<p>見事にgaドメインの権威サーバーが死んでました。<br>
+gaドメインの権威サーバーは</p>
+<ul>
+<li>a.ns.ga</li>
+<li>b.ns.ga</li>
+<li>c.ns.ga</li>
+<li>d.ns.ga</li>
+</ul>
+<p>の4つあり、これが全て死んでいる訳では無く、d.ns.gaが死んでいたぽいです。<br>
+だからGoogle DNS以外は正常に名前解決できていたのか？(それはそれでどうなんだ)</p>
+<h2 id=こういう時どんな顔をすればいいかわからないの>こういう時、どんな顔をすればいいかわからないの</h2>
+<p>こういった事例に遭遇したことが無かったので、綾波レイになってしまいました。<br>
+サーバーが壊れたらサーバー屋さんに問い合わせるけどドメインが壊れたら…？<br>
+よく分からないし、メールもなんか普通に受信できていたのでしばらく放置してみました。</p>
+<h2 id=数日後>数日後…</h2>
+<p>直んねえ！！！！！！！！ <br>
+マジで直らんしモヤモヤするので連絡先がないか調べてみました。<br>
+<a href=http://www.iana.org/domains/root/db/ga.html>ありました</a><br>
+<figure><img src=https://s3-media.hostdon.ne.jp/s1/media_attachments/files/107/835/288/475/351/622/original/72c73fcf0385c0cf.png>
+</figure>
+<br>
+でもメールアドレスもgaドメインってことは、連絡出来無いってコト！？！？！？！？！？！？<br>
+ガボンってフランス語が公用語なんだ<br>
+結局連絡できそうにないのでちょっと放置しました。</p>
+<h2 id=ところで>ところで</h2>
+<p>gaドメインを取得したFreenomで、今障害が起きてるgaドメインって取れるのかなと思いちょっと試してみました。(Freenomのサイト、滅茶苦茶重い。 )<br>
+結果から言うと、gaドメイン以外もドメインが取れなくなっていました。<br>
+<figure><img src=https://s3-media.hostdon.ne.jp/s1/media_attachments/files/107/783/695/053/914/854/original/e392a1bfba1ccb50.png>
+</figure>
+<br>
+ちなみにFreenomの障害情報は「何も障害起きてないぜ！」って言ってました。ハア<br>
+一応、Freenomにはサポートチケットを切っておき、「ドメイン取れねえけど」と投げておきました。</p>
+<h2 id=復旧は突然に>復旧は突然に</h2>
+<p>2022年2月14日に復旧しました。<br>
+<iframe src=https://ap.ketsuben.red/@naf/107795968799366950/embed class=mastodon-embed style=max-width:100%;border:0 width=400 allowfullscreen></iframe>
+<script src=https://ap.ketsuben.red/embed.js async></script><br>
+大体2、3日正常に名前解決されなかったということになりました。<br>
+ちなみにFreenomのチケットは無言でクローズされました。<br>
+<figure><img src=https://s3-media.hostdon.ne.jp/s1/media_attachments/files/107/835/289/411/184/298/original/dd4f1ca43a0aa7dd.png>
+</figure>
+</p>
+<h2 id=まとめ>まとめ</h2>
+<p>gaドメインやtkドメインといったドメインはccTLDという区分です。<br>
+ccTLDは確かSLAは無かったので、今回の様に数日間名前解決ができなくなる自体がありえます。なのでメインで使うドメインはgTLDにしましょうということです。(gTLDはSLAあり)<br>
+また、あくまでも無料ドメインなので過度なサポートや期待はやめて、落ちても良いサービスに使いましょう。<br>
+なので、auriga.dev取りました。gTLD最高！</p>
+</section>
+</article>
+</main>
+<footer class=footer>
+<p>&copy; 2022 <a href=http://example.org/>Auriga.dev</a></p>
+<p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</p>
+<p>
+<a href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>Paper 5.1</a>
+</p>
+</footer>
+</body>
+</html>

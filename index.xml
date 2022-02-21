@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Auriga.dev</title><link>http://example.org/</link><description>Recent content on Auriga.dev</description><generator>Hugo -- gohugo.io</generator><language>ja-JP</language><lastBuildDate>Mon, 21 Feb 2022 15:43:16 +0900</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml"/><item><title>Freenomのドメインをメインで使うのはやめろ</title><link>http://example.org/post/do-not-use-freenom/</link><pubDate>Mon, 21 Feb 2022 15:43:16 +0900</pubDate><guid>http://example.org/post/do-not-use-freenom/</guid><description>なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
+経緯 こんにちは Naf です。
+みなさーん！Freenom、使ってますか〜？
+地獄に落ちろ！！！！！！！！！！ 私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。
+てっきり最初はネームサーバーの問題かと思い、ConoHaの障害情報を調べたりしていたのですが、情報が出て来ず、意味不明でした。(ConoHaからLinodeにネームサーバーを変更したりしたが結果変わらず)
+よくよく、digで名前解決をしてみると、一部のサーバーのみ名前解決ができなくなっていることに気が付きました。
+具体的に見ると、Google DNS (8.8.8.8)からは正常に引けずに、Cloudflare DNS (1.1.1.1)からは正常に引けるようになっていました。
+そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
+そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
+Qiitaで見つけた記事のように適当なドメインをdigしてみます。
+$ dig example.ga +trace ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.16.1-Ubuntu &amp;lt;&amp;lt;&amp;gt;&amp;gt; example.ga +trace ;; global options: +cmd . 53 IN NS g.root-servers.net. . 53 IN NS h.root-servers.net. . 53 IN NS i.root-servers.net. . 53 IN NS j.root-servers.net. . 53 IN NS k.root-servers.net. . 53 IN NS l.</description></item></channel></rss>
