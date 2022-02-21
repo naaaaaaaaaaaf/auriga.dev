@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://auriga.dev/'
 languageCode = 'ja-JP'
 title = 'Auriga.dev'
 theme = 'paper'
