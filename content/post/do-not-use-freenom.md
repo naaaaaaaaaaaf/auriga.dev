@@ -84,7 +84,6 @@ gaドメインの権威サーバーは
 直んねえ！！！！！！！！    
 マジで直らんしモヤモヤするので連絡先がないか調べてみました。  
 [ありました](http://www.iana.org/domains/root/db/ga.html)  
-{{< figure src="https://s3-media.hostdon.ne.jp/s1/media_attachments/files/107/835/288/475/351/622/original/72c73fcf0385c0cf.png" >}}  
 でもメールアドレスもgaドメインってことは、連絡出来無いってコト！？！？！？！？！？！？  
 ガボンってフランス語が公用語なんだ  
 結局連絡できそうにないのでちょっと放置しました。  
@@ -92,7 +91,6 @@ gaドメインの権威サーバーは
 ## ところで
 gaドメインを取得したFreenomで、今障害が起きてるgaドメインって取れるのかなと思いちょっと試してみました。(Freenomのサイト、滅茶苦茶重い。  )  
 結果から言うと、gaドメイン以外もドメインが取れなくなっていました。  
-{{< figure src="https://s3-media.hostdon.ne.jp/s1/media_attachments/files/107/783/695/053/914/854/original/e392a1bfba1ccb50.png" >}}  
 ちなみにFreenomの障害情報は「何も障害起きてないぜ！」って言ってました。ハア  
 一応、Freenomにはサポートチケットを切っておき、「ドメイン取れねえけど」と投げておきました。  
 
@@ -101,7 +99,6 @@ gaドメインを取得したFreenomで、今障害が起きてるgaドメイン
 {{< mastodon ap.ketsuben.red naf 107795968799366950 >}}  
 大体2、3日正常に名前解決されなかったということになりました。  
 ちなみにFreenomのチケットは無言でクローズされました。  
-{{< figure src="https://s3-media.hostdon.ne.jp/s1/media_attachments/files/107/835/289/411/184/298/original/dd4f1ca43a0aa7dd.png" >}}  
 
 ## まとめ  
 gaドメインやtkドメインといったドメインはccTLDという区分です。  
