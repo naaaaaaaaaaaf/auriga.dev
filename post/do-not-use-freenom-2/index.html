@@ -1,0 +1,194 @@
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=ja-jp>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Freenomのドメインをメインで使うのはやめろ2(ツー) - Auriga.dev</title>
+<meta name=theme-color>
+<meta name=description content="こんにちは Naf です。
+以前(2年ぐらい前)にこんな記事を投稿しました。
+その記事ではgaドメインで障害が発生してサイトに繋がらなくなってしまったという重大な事案を取り上げました。
+時は流れ… 記事にするってことは何かあったということで、Freenom周りにいろいろ動きがあります。
+大きい動きとして、Meta社からの訴訟によりFreenomがドメインレジストリ事業から撤退する？という噂が立っています。
+この記事によると
+ Cloudflareのドメイン喪失: Cloudflareは、Freenomの.tkドメインシャットダウンにより、保有するドメインの22%を失いました。 Freenomの影響: Freenomは、無料の.tkドメインを提供していたことで知られており、そのシャットダウンは多くのウェブサイトに影響を与えました。 Cloudflareの対応: Cloudflareはこの問題に対処するための措置を講じていますが、詳細な対応策はページには記載されていません。 影響の範囲: このシャットダウンにより影響を受けたのはCloudflareだけでなく、他の多くのウェブサイトやオンラインサービスも含まれています。  とのことです。(By chatGPT)
+いままで私は auri.ga というドメインをメインに利用していましたが、2年前の件で懲りてメールアドレスについてはauriga.devドメインを利用しています。そのため、突然auri.gaが停止されてもサイトの内容を移せば問題ないです。しかし、長年使ったこのドメインは手放したくないので延命措置を考え、やってみました。
+gaドメインの移管 Freenomがやばい！ということなのでFreenomから他の良い(普通)レジストラにドメインを移管すればええやん！と思い、gaドメインを扱っている数少ないレジストラのGandiに移管してみようとしました。
+ちなみにgaドメインを扱っているレジストラはmon.gaから確認できます。あんまないです。
+Gandiはgaドメインの移管に結構お金が必要で、以下の通りドメインの移管料金+企業向けサービスの契約が必要です。計12000円ぐらいで結構必要です。
+ これを支払い、Freenomから提供されるTransfer Authorization CodeをGandiに入力すれば移管が完了します、が、結果から言うと失敗しました…
+そもそもTransfer Authorization Codeが違うと言われ、移管が一切できなくなりました。オワタ
+連絡が取れない… Transfer Authorization Codeが違うならFreenomに問い合わせればいいじゃない ということで問い合わせましたが、返信が来ない！！！  この画像のとおり、1ヶ月以上経っても返信がありませんでした。また、メールサポートにも連絡を入れましたがこれも返信が来ない…
+まあ、前述の件でいろいろあるのかもしれません…(せめて返信はしてほしい)
+一応Gandi側にも問い合わせたところ、 ANiNFかAFNICに問い合わせたら？と返信がありましたが、ANiNFからは「gaドメインは管理してないからnic-ga.comに問い合わせて」と、AFNICはサイトが落ちてて連絡先の情報が得られませんでした。
+nic-ga.comにも問い合わせを送っていますが、2024年3月時点で返信はありません。
+移管を諦め、恐怖のドメイン更新へ… こうなったらもうどうしようもないためGandiへの移管を諦めました。
+いまのところは問題ないのですが、auri.gaは3月末でドメインの期限が到来します。
+21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…">
+<meta name=author content="naf">
+<link rel="preload stylesheet" as=style href=https://auriga.dev/main.min.css>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3761835579827953" crossorigin=anonymous></script>
+<link rel=preload as=image href=https://auriga.dev/theme.svg>
+<link rel=preload as=image href="https://www.gravatar.com/avatar/2a88441d3f004954a314d65f02c7efe0?s=160&d=identicon">
+<link rel=preload as=image href=https://auriga.dev/github.svg>
+<link rel=preload as=image href=https://auriga.dev/mastodon.svg>
+<link rel=preload as=image href=https://auriga.dev/rss.svg>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css integrity=sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js integrity=sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script>
+<script>document.addEventListener('DOMContentLoaded',()=>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:!0},{left:'$',right:'$',display:!1}],throwOnError:!1}))</script>
+<link rel=icon href=https://auriga.dev/favicon.ico>
+<link rel=apple-touch-icon href=https://auriga.dev/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.90.1">
+<meta itemprop=name content="Freenomのドメインをメインで使うのはやめろ2(ツー)">
+<meta itemprop=description content="こんにちは Naf です。
+以前(2年ぐらい前)にこんな記事を投稿しました。
+その記事ではgaドメインで障害が発生してサイトに繋がらなくなってしまったという重大な事案を取り上げました。
+時は流れ… 記事にするってことは何かあったということで、Freenom周りにいろいろ動きがあります。
+大きい動きとして、Meta社からの訴訟によりFreenomがドメインレジストリ事業から撤退する？という噂が立っています。
+この記事によると
+ Cloudflareのドメイン喪失: Cloudflareは、Freenomの.tkドメインシャットダウンにより、保有するドメインの22%を失いました。 Freenomの影響: Freenomは、無料の.tkドメインを提供していたことで知られており、そのシャットダウンは多くのウェブサイトに影響を与えました。 Cloudflareの対応: Cloudflareはこの問題に対処するための措置を講じていますが、詳細な対応策はページには記載されていません。 影響の範囲: このシャットダウンにより影響を受けたのはCloudflareだけでなく、他の多くのウェブサイトやオンラインサービスも含まれています。  とのことです。(By chatGPT)
+いままで私は auri.ga というドメインをメインに利用していましたが、2年前の件で懲りてメールアドレスについてはauriga.devドメインを利用しています。そのため、突然auri.gaが停止されてもサイトの内容を移せば問題ないです。しかし、長年使ったこのドメインは手放したくないので延命措置を考え、やってみました。
+gaドメインの移管 Freenomがやばい！ということなのでFreenomから他の良い(普通)レジストラにドメインを移管すればええやん！と思い、gaドメインを扱っている数少ないレジストラのGandiに移管してみようとしました。
+ちなみにgaドメインを扱っているレジストラはmon.gaから確認できます。あんまないです。
+Gandiはgaドメインの移管に結構お金が必要で、以下の通りドメインの移管料金+企業向けサービスの契約が必要です。計12000円ぐらいで結構必要です。
+ これを支払い、Freenomから提供されるTransfer Authorization CodeをGandiに入力すれば移管が完了します、が、結果から言うと失敗しました…
+そもそもTransfer Authorization Codeが違うと言われ、移管が一切できなくなりました。オワタ
+連絡が取れない… Transfer Authorization Codeが違うならFreenomに問い合わせればいいじゃない ということで問い合わせましたが、返信が来ない！！！  この画像のとおり、1ヶ月以上経っても返信がありませんでした。また、メールサポートにも連絡を入れましたがこれも返信が来ない…
+まあ、前述の件でいろいろあるのかもしれません…(せめて返信はしてほしい)
+一応Gandi側にも問い合わせたところ、 ANiNFかAFNICに問い合わせたら？と返信がありましたが、ANiNFからは「gaドメインは管理してないからnic-ga.comに問い合わせて」と、AFNICはサイトが落ちてて連絡先の情報が得られませんでした。
+nic-ga.comにも問い合わせを送っていますが、2024年3月時点で返信はありません。
+移管を諦め、恐怖のドメイン更新へ… こうなったらもうどうしようもないためGandiへの移管を諦めました。
+いまのところは問題ないのですが、auri.gaは3月末でドメインの期限が到来します。
+21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…"><meta itemprop=datePublished content="2024-03-21T22:34:39+09:00">
+<meta itemprop=dateModified content="2024-03-21T22:34:39+09:00">
+<meta itemprop=wordCount content="46">
+<meta itemprop=keywords content>
+<meta property="og:title" content="Freenomのドメインをメインで使うのはやめろ2(ツー)">
+<meta property="og:description" content="こんにちは Naf です。
+以前(2年ぐらい前)にこんな記事を投稿しました。
+その記事ではgaドメインで障害が発生してサイトに繋がらなくなってしまったという重大な事案を取り上げました。
+時は流れ… 記事にするってことは何かあったということで、Freenom周りにいろいろ動きがあります。
+大きい動きとして、Meta社からの訴訟によりFreenomがドメインレジストリ事業から撤退する？という噂が立っています。
+この記事によると
+ Cloudflareのドメイン喪失: Cloudflareは、Freenomの.tkドメインシャットダウンにより、保有するドメインの22%を失いました。 Freenomの影響: Freenomは、無料の.tkドメインを提供していたことで知られており、そのシャットダウンは多くのウェブサイトに影響を与えました。 Cloudflareの対応: Cloudflareはこの問題に対処するための措置を講じていますが、詳細な対応策はページには記載されていません。 影響の範囲: このシャットダウンにより影響を受けたのはCloudflareだけでなく、他の多くのウェブサイトやオンラインサービスも含まれています。  とのことです。(By chatGPT)
+いままで私は auri.ga というドメインをメインに利用していましたが、2年前の件で懲りてメールアドレスについてはauriga.devドメインを利用しています。そのため、突然auri.gaが停止されてもサイトの内容を移せば問題ないです。しかし、長年使ったこのドメインは手放したくないので延命措置を考え、やってみました。
+gaドメインの移管 Freenomがやばい！ということなのでFreenomから他の良い(普通)レジストラにドメインを移管すればええやん！と思い、gaドメインを扱っている数少ないレジストラのGandiに移管してみようとしました。
+ちなみにgaドメインを扱っているレジストラはmon.gaから確認できます。あんまないです。
+Gandiはgaドメインの移管に結構お金が必要で、以下の通りドメインの移管料金+企業向けサービスの契約が必要です。計12000円ぐらいで結構必要です。
+ これを支払い、Freenomから提供されるTransfer Authorization CodeをGandiに入力すれば移管が完了します、が、結果から言うと失敗しました…
+そもそもTransfer Authorization Codeが違うと言われ、移管が一切できなくなりました。オワタ
+連絡が取れない… Transfer Authorization Codeが違うならFreenomに問い合わせればいいじゃない ということで問い合わせましたが、返信が来ない！！！  この画像のとおり、1ヶ月以上経っても返信がありませんでした。また、メールサポートにも連絡を入れましたがこれも返信が来ない…
+まあ、前述の件でいろいろあるのかもしれません…(せめて返信はしてほしい)
+一応Gandi側にも問い合わせたところ、 ANiNFかAFNICに問い合わせたら？と返信がありましたが、ANiNFからは「gaドメインは管理してないからnic-ga.comに問い合わせて」と、AFNICはサイトが落ちてて連絡先の情報が得られませんでした。
+nic-ga.comにも問い合わせを送っていますが、2024年3月時点で返信はありません。
+移管を諦め、恐怖のドメイン更新へ… こうなったらもうどうしようもないためGandiへの移管を諦めました。
+いまのところは問題ないのですが、auri.gaは3月末でドメインの期限が到来します。
+21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://auriga.dev/post/do-not-use-freenom-2/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2024-03-21T22:34:39+09:00">
+<meta property="article:modified_time" content="2024-03-21T22:34:39+09:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Freenomのドメインをメインで使うのはやめろ2(ツー)">
+<meta name=twitter:description content="こんにちは Naf です。
+以前(2年ぐらい前)にこんな記事を投稿しました。
+その記事ではgaドメインで障害が発生してサイトに繋がらなくなってしまったという重大な事案を取り上げました。
+時は流れ… 記事にするってことは何かあったということで、Freenom周りにいろいろ動きがあります。
+大きい動きとして、Meta社からの訴訟によりFreenomがドメインレジストリ事業から撤退する？という噂が立っています。
+この記事によると
+ Cloudflareのドメイン喪失: Cloudflareは、Freenomの.tkドメインシャットダウンにより、保有するドメインの22%を失いました。 Freenomの影響: Freenomは、無料の.tkドメインを提供していたことで知られており、そのシャットダウンは多くのウェブサイトに影響を与えました。 Cloudflareの対応: Cloudflareはこの問題に対処するための措置を講じていますが、詳細な対応策はページには記載されていません。 影響の範囲: このシャットダウンにより影響を受けたのはCloudflareだけでなく、他の多くのウェブサイトやオンラインサービスも含まれています。  とのことです。(By chatGPT)
+いままで私は auri.ga というドメインをメインに利用していましたが、2年前の件で懲りてメールアドレスについてはauriga.devドメインを利用しています。そのため、突然auri.gaが停止されてもサイトの内容を移せば問題ないです。しかし、長年使ったこのドメインは手放したくないので延命措置を考え、やってみました。
+gaドメインの移管 Freenomがやばい！ということなのでFreenomから他の良い(普通)レジストラにドメインを移管すればええやん！と思い、gaドメインを扱っている数少ないレジストラのGandiに移管してみようとしました。
+ちなみにgaドメインを扱っているレジストラはmon.gaから確認できます。あんまないです。
+Gandiはgaドメインの移管に結構お金が必要で、以下の通りドメインの移管料金+企業向けサービスの契約が必要です。計12000円ぐらいで結構必要です。
+ これを支払い、Freenomから提供されるTransfer Authorization CodeをGandiに入力すれば移管が完了します、が、結果から言うと失敗しました…
+そもそもTransfer Authorization Codeが違うと言われ、移管が一切できなくなりました。オワタ
+連絡が取れない… Transfer Authorization Codeが違うならFreenomに問い合わせればいいじゃない ということで問い合わせましたが、返信が来ない！！！  この画像のとおり、1ヶ月以上経っても返信がありませんでした。また、メールサポートにも連絡を入れましたがこれも返信が来ない…
+まあ、前述の件でいろいろあるのかもしれません…(せめて返信はしてほしい)
+一応Gandi側にも問い合わせたところ、 ANiNFかAFNICに問い合わせたら？と返信がありましたが、ANiNFからは「gaドメインは管理してないからnic-ga.comに問い合わせて」と、AFNICはサイトが落ちてて連絡先の情報が得られませんでした。
+nic-ga.comにも問い合わせを送っていますが、2024年3月時点で返信はありません。
+移管を諦め、恐怖のドメイン更新へ… こうなったらもうどうしようもないためGandiへの移管を諦めました。
+いまのところは問題ないのですが、auri.gaは3月末でドメインの期限が到来します。
+21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…">
+<link rel=canonical href=https://auriga.dev/post/do-not-use-freenom-2/>
+</head>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href=https://auriga.dev/>Auriga.dev</a>
+<div class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role=button aria-label=Dark></div>
+</div>
+<div class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove('not-ready')},10);const btnMenu=document.querySelector('.btn-menu');btnMenu.addEventListener('click',()=>{htmlClass.toggle('open')});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg='#faf8f1'.replace(/"/g,''),setDark=a=>{metaTheme.setAttribute('content',a?'#000':lightBg),htmlClass[a?'add':'remove']('dark'),localStorage.setItem('dark',a)},darkScheme=window.matchMedia('(prefers-color-scheme: dark)');if(htmlClass.contains('dark'))setDark(!0);else{const a=localStorage.getItem('dark');setDark(a?a==='true':darkScheme.matches)}darkScheme.addEventListener('change',a=>{setDark(a.matches)});const btnDark=document.querySelector('.btn-dark');btnDark.addEventListener('click',()=>{setDark(localStorage.getItem('dark')!=='true')})</script>
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/naaaaaaaaaaaf target=_blank rel=me>
+github
+</a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./mastodon.svg) href=https://mastodon.xn--q9jyb4c/@naf target=_blank rel=me>
+mastodon
+</a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://auriga.dev/index.xml target=_blank rel=alternate>
+rss
+</a>
+</nav>
+</div>
+</header>
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert">
+<article>
+<header class=mb-16>
+<h1 class="!my-0 pb-2.5">Freenomのドメインをメインで使うのはやめろ2(ツー)</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Mar 21, 2024</time>
+</div>
+</header>
+<section><p>こんにちは Naf です。<br>
+以前(2年ぐらい前)に<a href=https://auriga.dev/post/do-not-use-freenom/>こんな記事</a>を投稿しました。<br>
+その記事ではgaドメインで障害が発生してサイトに繋がらなくなってしまったという重大な事案を取り上げました。</p>
+<h1 id=時は流れ>時は流れ…</h1>
+<p>記事にするってことは何かあったということで、Freenom周りにいろいろ動きがあります。<br>
+大きい動きとして、<a href=https://www.netcraft.com/blog/cloudflare-loses-22-of-its-domains-in-freenom-tk-shutdown/>Meta社からの訴訟によりFreenomがドメインレジストリ事業から撤退する？</a>という噂が立っています。</p>
+<p>この記事によると</p>
+<ul>
+<li>Cloudflareのドメイン喪失: Cloudflareは、Freenomの.tkドメインシャットダウンにより、保有するドメインの22%を失いました。</li>
+<li>Freenomの影響: Freenomは、無料の.tkドメインを提供していたことで知られており、そのシャットダウンは多くのウェブサイトに影響を与えました。</li>
+<li>Cloudflareの対応: Cloudflareはこの問題に対処するための措置を講じていますが、詳細な対応策はページには記載されていません。</li>
+<li>影響の範囲: このシャットダウンにより影響を受けたのはCloudflareだけでなく、他の多くのウェブサイトやオンラインサービスも含まれています。</li>
+</ul>
+<p>とのことです。(By chatGPT)</p>
+<p>いままで私は auri.ga というドメインをメインに利用していましたが、2年前の件で懲りてメールアドレスについてはauriga.devドメインを利用しています。そのため、突然auri.gaが停止されてもサイトの内容を移せば問題ないです。しかし、長年使ったこのドメインは手放したくないので延命措置を考え、やってみました。</p>
+<h2 id=gaドメインの移管>gaドメインの移管</h2>
+<p>Freenomがやばい！ということなのでFreenomから他の良い(普通)レジストラにドメインを移管すればええやん！と思い、gaドメインを扱っている数少ないレジストラの<a href=https://gandi.net>Gandi</a>に移管してみようとしました。<br>
+ちなみにgaドメインを扱っているレジストラは<a href=https://mon.ga/>mon.ga</a>から確認できます。あんまないです。</p>
+<p>Gandiはgaドメインの移管に結構お金が必要で、以下の通りドメインの移管料金+企業向けサービスの契約が必要です。計12000円ぐらいで結構必要です。<br>
+<figure><img src=/img/gandi-transfer.jpg>
+</figure>
+</p>
+<p>これを支払い、Freenomから提供されるTransfer Authorization CodeをGandiに入力すれば移管が完了します、が、結果から言うと失敗しました…</p>
+<p>そもそもTransfer Authorization Codeが違うと言われ、移管が一切できなくなりました。オワタ</p>
+<h3 id=連絡が取れない>連絡が取れない…</h3>
+<p>Transfer Authorization Codeが違うならFreenomに問い合わせればいいじゃない ということで問い合わせましたが、返信が来ない！！！
+<figure><img src=/img/freenom-ticket.png>
+</figure>
+この画像のとおり、1ヶ月以上経っても返信がありませんでした。また、メールサポートにも連絡を入れましたがこれも返信が来ない…</p>
+<p>まあ、前述の件でいろいろあるのかもしれません…(せめて返信はしてほしい)</p>
+<p>一応Gandi側にも問い合わせたところ、 ANiNFかAFNICに問い合わせたら？と返信がありましたが、ANiNFからは「gaドメインは管理してないからnic-ga.comに問い合わせて」と、AFNICはサイトが落ちてて連絡先の情報が得られませんでした。<br>
+nic-ga.comにも問い合わせを送っていますが、2024年3月時点で返信はありません。</p>
+<h2 id=移管を諦め恐怖のドメイン更新へ>移管を諦め、恐怖のドメイン更新へ…</h2>
+<p>こうなったらもうどうしようもないためGandiへの移管を諦めました。<br>
+いまのところは問題ないのですが、auri.gaは3月末でドメインの期限が到来します。<br>
+21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…</p>
+</section>
+</article>
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60">
+<div class=mr-auto>
+&copy; 2024
+<a class=link href=https://auriga.dev/>Auriga.dev</a>
+</div>
+<a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>✎ Paper</a>
+</footer>
+</body>
+</html>
