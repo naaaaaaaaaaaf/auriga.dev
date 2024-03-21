@@ -2,3 +2,30 @@ baseURL = 'https://auriga.dev/'
 languageCode = 'ja-JP'
 title = 'Auriga.dev'
 theme = 'paper'
+
+[params]
+  # color style
+  color = 'linen'                           # linen, wheat, gray, light
+
+  # header social icons
+  github = 'naaaaaaaaaaaf'                 # github.com/YOUR_GITHUB_ID
+  mastodon = 'https://mastodon.xn--q9jyb4c/@naf'           # e.g. 'https://mastodon.instance/@xxx'
+  rss = true                                # show rss icon
+
+  # home page profile
+  avatar = 'naf@auriga.dev'                 # gravatar email or image url
+  name = 'naf'
+  bio = 'naf'
+
+
+  # misc
+  disableHLJS = true                        # disable highlight.js
+  disablePostNavigation = true              # disable post navigation
+  monoDarkIcon = true                       # show monochrome dark mode icon
+  math = true                               # enable KaTeX math typesetting globally
+
+  # giscus
+[params.giscus]
+  mapping = 'pathname'
+  theme = 'light'
+  lang = 'ja-JP'
