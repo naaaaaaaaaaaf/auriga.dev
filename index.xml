@@ -17,7 +17,26 @@ Gandiはgaドメインの移管に結構お金が必要で、以下の通りド�
 nic-ga.comにも問い合わせを送っていますが、2024年3月時点で返信はありません。
 移管を諦め、恐怖のドメイン更新へ… こうなったらもうどうしようもないためGandiへの移管を諦めました。
 いまのところは問題ないのですが、auri.gaは3月末でドメインの期限が到来します。
-21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…</description></item><item><title>Freenomのドメインをメインで使うのはやめろ</title><link>https://auriga.dev/post/do-not-use-freenom/</link><pubDate>Mon, 21 Feb 2022 15:43:16 +0900</pubDate><guid>https://auriga.dev/post/do-not-use-freenom/</guid><description>なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
+21日時点でFreenomから更新ができない状態でこれまたサポートに問い合わせてますが、前述の件もあってどうなるか分かりません。突然消えたらそういうことだと思ってください…</description></item><item><title>LinodeのNVMeストレージを試す</title><link>https://auriga.dev/post/try-linode-nvme/</link><pubDate>Thu, 03 Mar 2022 11:41:00 +0900</pubDate><guid>https://auriga.dev/post/try-linode-nvme/</guid><description>※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+こんにちは Nafです。
+今回はLinodeで提供されているブロックストレージ(NVMe SSD版)をベンチマークしてみました。
+このNVMe SSDは以前から一部のリージョンで使用可能だったのですが、最近東京リージョンで提供開始されました。
+(提供開始されたらメール通知するやつを申し込んだのにメールは来なかった…)
+準備 まずはテスト用のサーバーを立ち上げます。
+今回はLinode 2GBのプランでサーバーを作成しました。
+後に作成するブロックストレージと同じリージョンでサーバーを作らないと、ストレージがアタッチできないので注意しましょう。
+その後、サーバーにアタッチする用のボリュームを作成します。
+現時点(2022年3月)ではNVMeストレージは全てのリージョンで利用可能とのことです。
+NVMeで作成されたボリュームは専用の表示があるため、簡単に見分けが付きます。
+ボリュームをアタッチしたら、マウントを行います。
+マウント手順は「Show Config」から詳しく見ることができます。便利
+いざベンチマーク さて、準備ができたので実際にどれくらいの性能なのか、ベンチマークを行います。
+今回、ベンチマークはPostgreSQLのベンチマークツールであるpgbenchを利用しました。(当初ブロックストレージをデーターベース用に考えていたため)
+まずはpgbenchのセットアップから始めます。
+確か、postgresql-contribのパッケージにpgbenchが入っていた記憶…
+[naf@localhost ~]$ sudo dnf install postgresql postgresql-server postgresql-contrib pgbenchがインストールできたら早速ベンチマークを取ります。
+まずはtest_dbに対して初期化をします。
+[postgres@localhost ~]$ pgbench -i test_db dropping old tables... NOTICE: table &amp;#34;pgbench_accounts&amp;#34; does not exist, skipping NOTICE: table &amp;#34;pgbench_branches&amp;#34; does not exist, skipping NOTICE: table &amp;#34;pgbench_history&amp;#34; does not exist, skipping NOTICE: table &amp;#34;pgbench_tellers&amp;#34; does not exist, skipping creating tables.</description></item><item><title>Freenomのドメインをメインで使うのはやめろ</title><link>https://auriga.dev/post/do-not-use-freenom/</link><pubDate>Mon, 21 Feb 2022 15:43:16 +0900</pubDate><guid>https://auriga.dev/post/do-not-use-freenom/</guid><description>なにが言いたい Freenomの無料ドメイン(.ga .tk .cf .ml)は突然長時間の障害が起きる可能性があるのでメインで使うのはやめろ
 経緯 こんにちは Naf です。
 みなさーん！Freenom、使ってますか〜？
 地獄に落ちろ！！！！！！！！！！ 私はFreenomでauri.gaというドメインを取得して利用していたのですが、ある日(2022年2月11日ごろから)突然アクセス出来無くなりました。
@@ -27,4 +46,29 @@ nic-ga.comにも問い合わせを送っていますが、2024年3月時点で�
 そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
 そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
 Qiitaで見つけた記事のように適当なドメインをdigしてみます。
-$ dig example.ga +trace ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.16.1-Ubuntu &amp;lt;&amp;lt;&amp;gt;&amp;gt; example.ga +trace ;; global options: +cmd . 53 IN NS g.root-servers.net. . 53 IN NS h.root-servers.net. . 53 IN NS i.root-servers.net. . 53 IN NS j.root-servers.net. . 53 IN NS k.root-servers.net. . 53 IN NS l.</description></item></channel></rss>
+$ dig example.ga +trace ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.16.1-Ubuntu &amp;lt;&amp;lt;&amp;gt;&amp;gt; example.ga +trace ;; global options: +cmd . 53 IN NS g.root-servers.net. . 53 IN NS h.root-servers.net. . 53 IN NS i.root-servers.net. . 53 IN NS j.root-servers.net. . 53 IN NS k.root-servers.net. . 53 IN NS l.</description></item><item><title>GCSからDigitalOceanのSpacesに移行する</title><link>https://auriga.dev/post/migrate-digitalocean-from-gcs/</link><pubDate>Tue, 25 Jun 2019 11:30:48 +0900</pubDate><guid>https://auriga.dev/post/migrate-digitalocean-from-gcs/</guid><description>※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+どうもnafです。今回はGoogle Cloud StorageからDigitalOceanのS3互換ストレージ「Spaces」に移行してみたので、手順などを書きます。
+DigitalOceanって何？ DigitalOcean のホームページ クラウド事業者が提供しているサービスの名称です。
+現在、日本語には対応していませんが、普通に登録ができます。また、日本リージョンも提供していないのですが、シンガポールリージョンがあるため日本からのアクセスはそこまで悪くなりません。
+競合のサービスとしては、LinodeやVultrがよく挙げられますね。
+なぜDigitalOceanにするのか DigitalOceanでは先に挙げたようなLinode,Vultrでは提供していないS3互換ストレージサービス(Spaces)を提供しています。 このサービスはディスク使用量が250GBまで5ドルの定額制になっています。また、転送量も1TBまで無料なので純粋にコストパフォーマンスが高いです。(超過した場合は1GB/0.01$)
+また、無料で提供しているCDNサービスのノードが東京にもあるようなので、レイテンシの問題もありません。そのため、DigitalOceanのSpacesを利用することにしました。
+GCSからメディアファイルを移行する 私はGCSからSpacesへ移行する際に2つのツールを試してみました。順に紹介します。
+Minio client Minioというオープンソースのストレージ用のクライアントです。全然情報が無くて困っていたのですが、どうやらS3互換のストレージサービスを複数登録してメディアの移動が出来るみたいなので使ってみました。 mc config host add gcs https://storage.googleapis.com &amp;lt;YOUR-ACCESS-KEY&amp;gt; &amp;lt;YOUR-SECRET-KEY&amp;gt; #gcsを登録 mc config host add do https://&amp;lt;BUCKET&amp;gt;.sgp1.digitaloceanspaces.com &amp;lt;YOUR-ACCESS-KEY&amp;gt; &amp;lt;YOUR-SECRET-KEY&amp;gt; #DigitalOceanを登録 mc mirror gcs do #mirrorコマンドで同期 これで同期が開始されます。同期はかなり速く、大容量のバケットでもすぐ終わるのですが、どうやらGCS側で公開設定にしていたファイルがDigitalOcean側で非公開になってしまうようです。(全然使えねーじゃん)
+rclone そこでクラウドストレージ間の同期に特化しているお馴染のrcloneを使うことにしました。 rcloneの設定はめっちゃ優しい対話式なので割愛します。
+rclone sync gcs do -P これで同期が開始されます。Minio clientと違い詳細にログを出すことが可能です。ですが、rcloneはかなり真面目に同期をするので結構時間がかかります。大容量のバケットを同期する時は注意しましょう。
+これでGCSからDigitalOceanのSpacesへの移行が完了しました。作業自体はコマンドを何個か打つだけなので簡単です。SpacesはGCSやS3などから移行したいと考えている人にはおすすめのサービスかと思います。この機会に移行してみてはいかがでしょうか。
+最後に無料クレジットが貰える紹介リンクを貼っておきます。
+DigitalOceanに登録
+※GCSやS3はファイルの操作が課金対象になるため、調子に乗って何回も同期するとクラウド破産する可能性があります。計画的に使用してください。</description></item><item><title>さくらのウェブアクセラレータをさくらのレンタルサーバーで使う</title><link>https://auriga.dev/post/sakura-cdn/</link><pubDate>Fri, 03 May 2019 11:23:35 +0900</pubDate><guid>https://auriga.dev/post/sakura-cdn/</guid><description>※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+どうもnafです。今回はさくらのレンタルサーバーで動かしているWordPressにさくらのウェブアクセラレータを使ってみました。
+さくらのウェブアクセラレータとは 一言でいうとCDNです。CDNとはコンテンツデリバリネットワークの略称です。
+ざっくり説明すると、オリジンサーバからファイルをキャッシュしてエンドユーザーに近いサーバから高速にwebを配信をするサービスの事です。
+なぜレンタルサーバーにCDNを使うのか レンタルサーバーは多くの場合、共有サーバーとなっており、下位プランだと予測が出来ない突発的なアクセス増には耐えきれずに503エラーが出ることが多いです。
+そこでCDNサービスを使いコンテンツをキャッシュすることで、高速に安定したサイト運営ができるようになります。
+Webアクセラレータの利点 さくらのクラウドのアカウントがあれば500GiB分無償で使える 日本内にサーバーがあるのでレスポンスが良い APIとドキュメントが豊富 Webアクセラレータの欠点 キャッシュが Cache-Control: s-maxageレスポンスヘッダで制御されるので変更する必要がある。 サーバーが国内のみなので世界向けなサイトにはあまり有効ではない WordPressへの導入 Cache controlを付けないといけないので面倒そうですが便利なプラグインがあります。
+https://github.com/yamamoto-febc/wp-sacloud-webaccel
+WordPressの管理画面からインストールできるため簡単に導入できます。
+あとは下の画像の通り設定をすれば導入は完了です。
+デベロッパーツールで確認するとちゃんとキャッシュされていることが分かります。
+便利で簡単に導入でき、500GiBまで無償なのでぜひ皆さんも試してみてください。</description></item></channel></rss>

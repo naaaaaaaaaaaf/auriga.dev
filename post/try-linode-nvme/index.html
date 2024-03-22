@@ -1,0 +1,265 @@
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=ja-jp>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>LinodeのNVMeストレージを試す - Auriga.dev</title>
+<meta name=theme-color>
+<meta name=description content="※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+こんにちは Nafです。
+今回はLinodeで提供されているブロックストレージ(NVMe SSD版)をベンチマークしてみました。
+このNVMe SSDは以前から一部のリージョンで使用可能だったのですが、最近東京リージョンで提供開始されました。
+(提供開始されたらメール通知するやつを申し込んだのにメールは来なかった…)
+準備 まずはテスト用のサーバーを立ち上げます。
+今回はLinode 2GBのプランでサーバーを作成しました。
+後に作成するブロックストレージと同じリージョンでサーバーを作らないと、ストレージがアタッチできないので注意しましょう。
+ その後、サーバーにアタッチする用のボリュームを作成します。
+現時点(2022年3月)ではNVMeストレージは全てのリージョンで利用可能とのことです。
+ NVMeで作成されたボリュームは専用の表示があるため、簡単に見分けが付きます。
+ ボリュームをアタッチしたら、マウントを行います。
+マウント手順は「Show Config」から詳しく見ることができます。便利
+ いざベンチマーク さて、準備ができたので実際にどれくらいの性能なのか、ベンチマークを行います。
+今回、ベンチマークはPostgreSQLのベンチマークツールであるpgbenchを利用しました。(当初ブロックストレージをデーターベース用に考えていたため)
+まずはpgbenchのセットアップから始めます。
+確か、postgresql-contribのパッケージにpgbenchが入っていた記憶…
+[naf@localhost ~]$ sudo dnf install postgresql postgresql-server postgresql-contrib pgbenchがインストールできたら早速ベンチマークを取ります。
+まずはtest_dbに対して初期化をします。
+[postgres@localhost ~]$ pgbench -i test_db dropping old tables... NOTICE: table &#34;pgbench_accounts&#34; does not exist, skipping NOTICE: table &#34;pgbench_branches&#34; does not exist, skipping NOTICE: table &#34;pgbench_history&#34; does not exist, skipping NOTICE: table &#34;pgbench_tellers&#34; does not exist, skipping creating tables.">
+<meta name=author content="naf">
+<link rel="preload stylesheet" as=style href=https://auriga.dev/main.min.css>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3761835579827953" crossorigin=anonymous></script>
+<link rel=preload as=image href=https://auriga.dev/theme.svg>
+<link rel=preload as=image href="https://www.gravatar.com/avatar/2a88441d3f004954a314d65f02c7efe0?s=160&d=identicon">
+<link rel=preload as=image href=https://auriga.dev/github.svg>
+<link rel=preload as=image href=https://auriga.dev/mastodon.svg>
+<link rel=preload as=image href=https://auriga.dev/rss.svg>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css integrity=sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js integrity=sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script>
+<script>document.addEventListener('DOMContentLoaded',()=>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:!0},{left:'$',right:'$',display:!1}],throwOnError:!1}))</script>
+<link rel=icon href=https://auriga.dev/favicon.ico>
+<link rel=apple-touch-icon href=https://auriga.dev/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.90.1">
+<meta itemprop=name content="LinodeのNVMeストレージを試す">
+<meta itemprop=description content="※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+こんにちは Nafです。
+今回はLinodeで提供されているブロックストレージ(NVMe SSD版)をベンチマークしてみました。
+このNVMe SSDは以前から一部のリージョンで使用可能だったのですが、最近東京リージョンで提供開始されました。
+(提供開始されたらメール通知するやつを申し込んだのにメールは来なかった…)
+準備 まずはテスト用のサーバーを立ち上げます。
+今回はLinode 2GBのプランでサーバーを作成しました。
+後に作成するブロックストレージと同じリージョンでサーバーを作らないと、ストレージがアタッチできないので注意しましょう。
+ その後、サーバーにアタッチする用のボリュームを作成します。
+現時点(2022年3月)ではNVMeストレージは全てのリージョンで利用可能とのことです。
+ NVMeで作成されたボリュームは専用の表示があるため、簡単に見分けが付きます。
+ ボリュームをアタッチしたら、マウントを行います。
+マウント手順は「Show Config」から詳しく見ることができます。便利
+ いざベンチマーク さて、準備ができたので実際にどれくらいの性能なのか、ベンチマークを行います。
+今回、ベンチマークはPostgreSQLのベンチマークツールであるpgbenchを利用しました。(当初ブロックストレージをデーターベース用に考えていたため)
+まずはpgbenchのセットアップから始めます。
+確か、postgresql-contribのパッケージにpgbenchが入っていた記憶…
+[naf@localhost ~]$ sudo dnf install postgresql postgresql-server postgresql-contrib pgbenchがインストールできたら早速ベンチマークを取ります。
+まずはtest_dbに対して初期化をします。
+[postgres@localhost ~]$ pgbench -i test_db dropping old tables... NOTICE: table &#34;pgbench_accounts&#34; does not exist, skipping NOTICE: table &#34;pgbench_branches&#34; does not exist, skipping NOTICE: table &#34;pgbench_history&#34; does not exist, skipping NOTICE: table &#34;pgbench_tellers&#34; does not exist, skipping creating tables."><meta itemprop=datePublished content="2022-03-03T11:41:00+09:00">
+<meta itemprop=dateModified content="2022-03-03T11:41:00+09:00">
+<meta itemprop=wordCount content="331">
+<meta itemprop=keywords content>
+<meta property="og:title" content="LinodeのNVMeストレージを試す">
+<meta property="og:description" content="※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+こんにちは Nafです。
+今回はLinodeで提供されているブロックストレージ(NVMe SSD版)をベンチマークしてみました。
+このNVMe SSDは以前から一部のリージョンで使用可能だったのですが、最近東京リージョンで提供開始されました。
+(提供開始されたらメール通知するやつを申し込んだのにメールは来なかった…)
+準備 まずはテスト用のサーバーを立ち上げます。
+今回はLinode 2GBのプランでサーバーを作成しました。
+後に作成するブロックストレージと同じリージョンでサーバーを作らないと、ストレージがアタッチできないので注意しましょう。
+ その後、サーバーにアタッチする用のボリュームを作成します。
+現時点(2022年3月)ではNVMeストレージは全てのリージョンで利用可能とのことです。
+ NVMeで作成されたボリュームは専用の表示があるため、簡単に見分けが付きます。
+ ボリュームをアタッチしたら、マウントを行います。
+マウント手順は「Show Config」から詳しく見ることができます。便利
+ いざベンチマーク さて、準備ができたので実際にどれくらいの性能なのか、ベンチマークを行います。
+今回、ベンチマークはPostgreSQLのベンチマークツールであるpgbenchを利用しました。(当初ブロックストレージをデーターベース用に考えていたため)
+まずはpgbenchのセットアップから始めます。
+確か、postgresql-contribのパッケージにpgbenchが入っていた記憶…
+[naf@localhost ~]$ sudo dnf install postgresql postgresql-server postgresql-contrib pgbenchがインストールできたら早速ベンチマークを取ります。
+まずはtest_dbに対して初期化をします。
+[postgres@localhost ~]$ pgbench -i test_db dropping old tables... NOTICE: table &#34;pgbench_accounts&#34; does not exist, skipping NOTICE: table &#34;pgbench_branches&#34; does not exist, skipping NOTICE: table &#34;pgbench_history&#34; does not exist, skipping NOTICE: table &#34;pgbench_tellers&#34; does not exist, skipping creating tables.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://auriga.dev/post/try-linode-nvme/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-03-03T11:41:00+09:00">
+<meta property="article:modified_time" content="2022-03-03T11:41:00+09:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="LinodeのNVMeストレージを試す">
+<meta name=twitter:description content="※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+こんにちは Nafです。
+今回はLinodeで提供されているブロックストレージ(NVMe SSD版)をベンチマークしてみました。
+このNVMe SSDは以前から一部のリージョンで使用可能だったのですが、最近東京リージョンで提供開始されました。
+(提供開始されたらメール通知するやつを申し込んだのにメールは来なかった…)
+準備 まずはテスト用のサーバーを立ち上げます。
+今回はLinode 2GBのプランでサーバーを作成しました。
+後に作成するブロックストレージと同じリージョンでサーバーを作らないと、ストレージがアタッチできないので注意しましょう。
+ その後、サーバーにアタッチする用のボリュームを作成します。
+現時点(2022年3月)ではNVMeストレージは全てのリージョンで利用可能とのことです。
+ NVMeで作成されたボリュームは専用の表示があるため、簡単に見分けが付きます。
+ ボリュームをアタッチしたら、マウントを行います。
+マウント手順は「Show Config」から詳しく見ることができます。便利
+ いざベンチマーク さて、準備ができたので実際にどれくらいの性能なのか、ベンチマークを行います。
+今回、ベンチマークはPostgreSQLのベンチマークツールであるpgbenchを利用しました。(当初ブロックストレージをデーターベース用に考えていたため)
+まずはpgbenchのセットアップから始めます。
+確か、postgresql-contribのパッケージにpgbenchが入っていた記憶…
+[naf@localhost ~]$ sudo dnf install postgresql postgresql-server postgresql-contrib pgbenchがインストールできたら早速ベンチマークを取ります。
+まずはtest_dbに対して初期化をします。
+[postgres@localhost ~]$ pgbench -i test_db dropping old tables... NOTICE: table &#34;pgbench_accounts&#34; does not exist, skipping NOTICE: table &#34;pgbench_branches&#34; does not exist, skipping NOTICE: table &#34;pgbench_history&#34; does not exist, skipping NOTICE: table &#34;pgbench_tellers&#34; does not exist, skipping creating tables.">
+<link rel=canonical href=https://auriga.dev/post/try-linode-nvme/>
+</head>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href=https://auriga.dev/>Auriga.dev</a>
+<div class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role=button aria-label=Dark></div>
+</div>
+<div class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove('not-ready')},10);const btnMenu=document.querySelector('.btn-menu');btnMenu.addEventListener('click',()=>{htmlClass.toggle('open')});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg='#faf8f1'.replace(/"/g,''),setDark=a=>{metaTheme.setAttribute('content',a?'#000':lightBg),htmlClass[a?'add':'remove']('dark'),localStorage.setItem('dark',a)},darkScheme=window.matchMedia('(prefers-color-scheme: dark)');if(htmlClass.contains('dark'))setDark(!0);else{const a=localStorage.getItem('dark');setDark(a?a==='true':darkScheme.matches)}darkScheme.addEventListener('change',a=>{setDark(a.matches)});const btnDark=document.querySelector('.btn-dark');btnDark.addEventListener('click',()=>{setDark(localStorage.getItem('dark')!=='true')})</script>
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/naaaaaaaaaaaf target=_blank rel=me>
+github
+</a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./mastodon.svg) href=https://mastodon.xn--q9jyb4c/@naf target=_blank rel=me>
+mastodon
+</a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://auriga.dev/index.xml target=_blank rel=alternate>
+rss
+</a>
+</nav>
+</div>
+</header>
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert">
+<article>
+<header class=mb-16>
+<h1 class="!my-0 pb-2.5">LinodeのNVMeストレージを試す</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Mar 3, 2022</time>
+</div>
+</header>
+<section><p>※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。</p>
+<p>こんにちは Nafです。</p>
+<p>今回は<a href="https://www.linode.com/lp/refer/?r=33483601fd2884fed84b1ac598927371f66596a8">Linode</a>で提供されているブロックストレージ(NVMe SSD版)をベンチマークしてみました。</p>
+<p>このNVMe SSDは以前から一部のリージョンで使用可能だったのですが、最近東京リージョンで提供開始されました。</p>
+<p>(提供開始されたらメール通知するやつを申し込んだのにメールは来なかった…)</p>
+<h1 id=準備>準備</h1>
+<p>まずはテスト用のサーバーを立ち上げます。<br>
+今回はLinode 2GBのプランでサーバーを作成しました。</p>
+<p>後に作成するブロックストレージと同じリージョンでサーバーを作らないと、ストレージがアタッチできないので注意しましょう。<br>
+<figure><img src=/img/try-linode-nvme01.webp>
+</figure>
+</p>
+<p>その後、サーバーにアタッチする用のボリュームを作成します。<br>
+現時点(2022年3月)ではNVMeストレージは全てのリージョンで利用可能とのことです。<br>
+<figure><img src=/img/try-linode-nvme02.webp>
+</figure>
+</p>
+<p>NVMeで作成されたボリュームは専用の表示があるため、簡単に見分けが付きます。<br>
+<figure><img src=/img/try-linode-nvme03.webp>
+</figure>
+</p>
+<p>ボリュームをアタッチしたら、マウントを行います。<br>
+マウント手順は「Show Config」から詳しく見ることができます。便利<br>
+<figure><img src=/img/try-linode-nvme04.webp>
+</figure>
+</p>
+<h1 id=いざベンチマーク>いざベンチマーク</h1>
+<p>さて、準備ができたので実際にどれくらいの性能なのか、ベンチマークを行います。</p>
+<p>今回、ベンチマークはPostgreSQLのベンチマークツールであるpgbenchを利用しました。(当初ブロックストレージをデーターベース用に考えていたため)</p>
+<p>まずはpgbenchのセットアップから始めます。<br>
+確か、postgresql-contribのパッケージにpgbenchが入っていた記憶…</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>naf@localhost ~<span style=color:#f92672>]</span>$ sudo dnf install postgresql postgresql-server postgresql-contrib
+</code></pre></div><p>pgbenchがインストールできたら早速ベンチマークを取ります。<br>
+まずはtest_dbに対して初期化をします。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>postgres@localhost ~<span style=color:#f92672>]</span>$ pgbench -i test_db
+dropping old tables...
+NOTICE:  table <span style=color:#e6db74>&#34;pgbench_accounts&#34;</span> does not exist, skipping
+NOTICE:  table <span style=color:#e6db74>&#34;pgbench_branches&#34;</span> does not exist, skipping
+NOTICE:  table <span style=color:#e6db74>&#34;pgbench_history&#34;</span> does not exist, skipping
+NOTICE:  table <span style=color:#e6db74>&#34;pgbench_tellers&#34;</span> does not exist, skipping
+creating tables...
+generating data <span style=color:#f92672>(</span>client-side<span style=color:#f92672>)</span>...
+<span style=color:#ae81ff>100000</span> of <span style=color:#ae81ff>100000</span> tuples <span style=color:#f92672>(</span>100%<span style=color:#f92672>)</span> <span style=color:#66d9ef>done</span> <span style=color:#f92672>(</span>elapsed 0.14 s, remaining 0.00 s<span style=color:#f92672>)</span>
+vacuuming...
+creating primary keys...
+<span style=color:#66d9ef>done</span> in 0.41 s <span style=color:#f92672>(</span>drop tables 0.00 s, create tables 0.01 s, client-side generate 0.22 s, vacuum 0.10 s, primary keys 0.08 s<span style=color:#f92672>)</span>
+</code></pre></div><p>初期化が完了したらベンチマークを実行します。<br>
+今回は 「接続数10、1接続あたりのトランザクションは1000 」という条件で取りました。</p>
+<p>pgbenchはこのようなベンチマークだけではなく、実際に使うSQLもベンチマークできるようです。実際の見積りが出来ていいですね</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>postgres@localhost ~<span style=color:#f92672>]</span>$ pgbench -c <span style=color:#ae81ff>10</span> -t <span style=color:#ae81ff>1000</span> test_db
+starting vacuum...end.
+transaction type: &lt;builtin: TPC-B <span style=color:#f92672>(</span>sort of<span style=color:#f92672>)</span>&gt;
+scaling factor: <span style=color:#ae81ff>1</span>
+query mode: simple
+number of clients: <span style=color:#ae81ff>10</span>
+number of threads: <span style=color:#ae81ff>1</span>
+number of transactions per client: <span style=color:#ae81ff>1000</span>
+number of transactions actually processed: 10000/10000
+latency average <span style=color:#f92672>=</span> 19.021 ms
+tps <span style=color:#f92672>=</span> 525.746350 <span style=color:#f92672>(</span>including connections establishing<span style=color:#f92672>)</span>
+tps <span style=color:#f92672>=</span> 525.914967 <span style=color:#f92672>(</span>excluding connections establishing<span style=color:#f92672>)</span>
+</code></pre></div><p>結果、TPSが525前後ということになりました。<br>
+めちゃくちゃざっくりとTPSが大きければ大きいほど性能が良いということで大丈夫です。</p>
+<p>それでは、NVMeストレージをマウントして、Postgresqlのデータフォルダも変更します。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>root@localhost ~<span style=color:#f92672>]</span><span style=color:#75715e># mkfs.ext4 &#34;/dev/disk/by-id/scsi-0Linode_Volume_db-bench&#34;</span>
+mke2fs 1.46.3 <span style=color:#f92672>(</span>27-Jul-2021<span style=color:#f92672>)</span>
+Discarding device blocks: <span style=color:#66d9ef>done</span>                            
+Creating filesystem with <span style=color:#ae81ff>13107200</span> 4k blocks and <span style=color:#ae81ff>3276800</span> inodes
+Filesystem UUID: 9428e668-d18d-49ef-a7c3-305127615e73
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, <span style=color:#ae81ff>11239424</span>
+
+Allocating group tables: <span style=color:#66d9ef>done</span>                            
+Writing inode tables: <span style=color:#66d9ef>done</span>                            
+Creating journal <span style=color:#f92672>(</span><span style=color:#ae81ff>65536</span> blocks<span style=color:#f92672>)</span>: <span style=color:#66d9ef>done</span>
+Writing superblocks and filesystem accounting information: <span style=color:#66d9ef>done</span>   
+
+<span style=color:#f92672>[</span>root@localhost ~<span style=color:#f92672>]</span><span style=color:#75715e># mkdir &#34;/mnt/db-bench&#34;</span>
+<span style=color:#f92672>[</span>root@localhost ~<span style=color:#f92672>]</span><span style=color:#75715e># mount &#34;/dev/disk/by-id/scsi-0Linode_Volume_db-bench&#34; &#34;/mnt/db-bench&#34;</span>
+<span style=color:#f92672>[</span>root@localhost ~<span style=color:#f92672>]</span><span style=color:#75715e># chown -R postgres:postgres /mnt/db-bench/pgsql/</span>
+<span style=color:#f92672>[</span>root@localhost ~<span style=color:#f92672>]</span><span style=color:#75715e># chmod -R 700 /mnt/db-bench/pgsql/</span>
+</code></pre></div><p>データフォルダの移行はPG_DATAとかいじっていい感じにしてください。</p>
+<p>移行が完了したら、再度同じ条件でベンチマークを取ってみます。</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#f92672>[</span>postgres@localhost ~<span style=color:#f92672>]</span>$ pgbench -c <span style=color:#ae81ff>10</span> -t <span style=color:#ae81ff>1000</span> test_db
+starting vacuum...end.
+transaction type: &lt;builtin: TPC-B <span style=color:#f92672>(</span>sort of<span style=color:#f92672>)</span>&gt;
+scaling factor: <span style=color:#ae81ff>1</span>
+query mode: simple
+number of clients: <span style=color:#ae81ff>10</span>
+number of threads: <span style=color:#ae81ff>1</span>
+number of transactions per client: <span style=color:#ae81ff>1000</span>
+number of transactions actually processed: 10000/10000
+latency average <span style=color:#f92672>=</span> 54.972 ms
+tps <span style=color:#f92672>=</span> 181.911595 <span style=color:#f92672>(</span>including connections establishing<span style=color:#f92672>)</span>
+tps <span style=color:#f92672>=</span> 181.955593 <span style=color:#f92672>(</span>excluding connections establishing<span style=color:#f92672>)</span>
+</code></pre></div><p>!?!?!?!?!?????????!?!?!?!?!?!?!?!</p>
+<p>遅すぎワロタ</p>
+<p>TPSがブロックストレージのほうが4,5倍遅くなっちゃった。</p>
+<h1 id=結論>結論</h1>
+<p>NVMeって名前は速いと思わせているが、以外と大したことは無い速度だった。</p>
+<p>公式ドキュメントによると、概ねスタンダードモードで350MB/s、バーストモードで525MB/sの速度になるようです。(予想してたよりあんま速くないね…)<br>
+<figure><img src=/img/try-linode-nvme05.webp>
+</figure>
+</p>
+<p>この速度だとサーバーのストレージの方が速いので、データベースなどディスクが重要なソフトはサーバーのストレージを使うことをお勧めします。</p>
+<p>バックアップデーターの保存とかには向いているかもしれないですね(値段も安いので…)</p>
+</section>
+</article>
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60">
+<div class=mr-auto>
+&copy; 2024
+<a class=link href=https://auriga.dev/>Auriga.dev</a>
+</div>
+<a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>✎ Paper</a>
+</footer>
+</body>
+</html>
