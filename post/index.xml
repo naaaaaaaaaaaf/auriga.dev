@@ -46,7 +46,34 @@ NVMeで作成されたボリュームは専用の表示があるため、簡単�
 そこでGoogle DNSがおかしい？と思い、Google DNSのキャッシュクリアをサイトにアクセスして実行してみました…が、結局改善しませんでした。
 そういえば 昔、ioドメインで障害が起き、名前解決が出来無いという事案があったのを思い出し、それと同じような状況なのか調べてみました。
 Qiitaで見つけた記事のように適当なドメインをdigしてみます。
-$ dig example.ga +trace ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.16.1-Ubuntu &amp;lt;&amp;lt;&amp;gt;&amp;gt; example.ga +trace ;; global options: +cmd . 53 IN NS g.root-servers.net. . 53 IN NS h.root-servers.net. . 53 IN NS i.root-servers.net. . 53 IN NS j.root-servers.net. . 53 IN NS k.root-servers.net. . 53 IN NS l.</description></item><item><title>GCSからDigitalOceanのSpacesに移行する</title><link>https://auriga.dev/post/migrate-digitalocean-from-gcs/</link><pubDate>Tue, 25 Jun 2019 11:30:48 +0900</pubDate><guid>https://auriga.dev/post/migrate-digitalocean-from-gcs/</guid><description>※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
+$ dig example.ga +trace ; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.16.1-Ubuntu &amp;lt;&amp;lt;&amp;gt;&amp;gt; example.ga +trace ;; global options: +cmd . 53 IN NS g.root-servers.net. . 53 IN NS h.root-servers.net. . 53 IN NS i.root-servers.net. . 53 IN NS j.root-servers.net. . 53 IN NS k.root-servers.net. . 53 IN NS l.</description></item><item><title>LineageOS 16から17.1にアップデートした</title><link>https://auriga.dev/post/lineage-upgrade/</link><pubDate>Sun, 20 Dec 2020 10:00:00 +0900</pubDate><guid>https://auriga.dev/post/lineage-upgrade/</guid><description>naaaaaaaaaaafです。
+OnePlus5T君は、デフォルトでOxygenOSとかいうよく分からんOSが入っています。ググってみるとOxygenOSの良い点みたいな記事 もあるのですが、ピュアっぽいAndroidを使いたかったので、2年前にこのスマホを買った時から Lineage OSを導入しています。
+Lineage OS のサイトを見ると分かるように、OnePlus5Tは公式のイメージが配布されており、手軽にRomを変えることができます。アップデートも端末の設定から行うことが出来き、とても便利です。
+しかし、表題にある通りLineage OS 16 -&amp;gt; Lineage OS 17.1 のようなアップデートは設定から行えず、パソコンから行う形になります。
+今回はそのアップデートの方法について、前(15から16)までと変わっていたため簡単にまとめました。
+(なお、現在はZoomやmeet用のWebカメラとして役割を任されています)
+ドキュメントを読む 読め アップデートについてのドキュメント
+Firmwareを更新し、TWRPから「Advance -&amp;gt; ADB sideloadみたいなやつ」を選択し、パソコンから更新するイメージをadb sideloadするだけです。
+Open GAPPSを入れている人は起動する前に、一緒にsideloadしましょう。
+sideloadはいい感じに差分データーをインストールしてくれるため、特にリセットをする必要もなく、アップデートをインストールできます。便利ですね。
+よかったね</description></item><item><title>Linodeのオブジェクトストレージ(Beta版)を試す</title><link>https://auriga.dev/post/use-linode-objectstorage-beta/</link><pubDate>Thu, 27 Jun 2019 00:00:00 +0000</pubDate><guid>https://auriga.dev/post/use-linode-objectstorage-beta/</guid><description> LinodeよりS3互換のオブジェクトストレージの先行利用権を貰ったため試してみました。
+※事前にオブジェクトストレージについてのアンケートに答えたため先行利用権が貰えたようです。現在はサポートチケットを切ると貰えるようです(参考)
+Cloud Managerから使ってみる Cloud ManagerにアクセスするとObject Storageが追加されているのがわかります。
+ここから新たなバケットを作ることができます。
+現時点ではリージョンはニュージャージーのみ提供のようです。(おそらく東京リージョンも追加されると思われます。)
+バケットを作成しました。ですが、今はCloud Managerからファイルをアップロードしたり権限の編集をすることは出来ないようです。そのため他のツールで操作してみます。
+Cyberduckでファイルのアップロードをする s3互換のストレージなのでs3cmd等のコマンドラインツールも使えるのですが面倒なのでGUIで操作できる「Cyberduck」を使ってみます。
+Cyberduckをインストール後、Cloud Managerで発行したアクセスキーとシークレット、エンドポイント(us-east-1.linodeobjects.com)を入力します。
+これで接続が完了します。
+アップロード後、権限を修正する場合はファイルを選択し情報-&amp;gt;アクセス権より編集が可能です。
+アップロードした画像: https://mstdn.us-east-1.linodeobjects.com/28683404.png
+現時点で出来ないこと 重複しますがまとめておきます。
+Cloud Managerからのファイル操作 他のリージョンの利用(現在はニュージャージーのみ) カスタムドメイン、証明書の利用 現在はBeta版での提供なのでおそらくこれらのことは出来るようになると思います。
+料金について 料金はストレージ利用料が250GBにつき5ドル(超過分は1GBあたり0.02ドル)、転送量が1GBあたり0.02ドルとなっています。
+しかし、Linodeで既にインスタンスを持っている場合は、そちらの転送プールが優先的に利用されるようです。
+そのため、Linodeで沢山インスタンスを持っているユーザーは転送量のことは気にせず利用できそうです。
+料金体系はこの転送量課金以外はDigitalOceanのSpacesとほぼ同じです。このBeta版の機会に試してみては如何でしょうか。
+Linodeに登録</description></item><item><title>GCSからDigitalOceanのSpacesに移行する</title><link>https://auriga.dev/post/migrate-digitalocean-from-gcs/</link><pubDate>Tue, 25 Jun 2019 11:30:48 +0900</pubDate><guid>https://auriga.dev/post/migrate-digitalocean-from-gcs/</guid><description>※この記事は以前別ブログに掲載していたものを加筆修正し、再度公開したものです。
 どうもnafです。今回はGoogle Cloud StorageからDigitalOceanのS3互換ストレージ「Spaces」に移行してみたので、手順などを書きます。
 DigitalOceanって何？ DigitalOcean のホームページ クラウド事業者が提供しているサービスの名称です。
 現在、日本語には対応していませんが、普通に登録ができます。また、日本リージョンも提供していないのですが、シンガポールリージョンがあるため日本からのアクセスはそこまで悪くなりません。

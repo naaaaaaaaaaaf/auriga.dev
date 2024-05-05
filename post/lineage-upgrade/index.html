@@ -1,0 +1,141 @@
+<!doctype html><html class="not-ready lg:text-base" style=--bg:#faf8f1 lang=ja-jp>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>LineageOS 16から17.1にアップデートした - Auriga.dev</title>
+<meta name=theme-color>
+<meta name=description content="naaaaaaaaaaafです。
+OnePlus5T君は、デフォルトでOxygenOSとかいうよく分からんOSが入っています。ググってみるとOxygenOSの良い点みたいな記事 もあるのですが、ピュアっぽいAndroidを使いたかったので、2年前にこのスマホを買った時から Lineage OSを導入しています。
+Lineage OS のサイトを見ると分かるように、OnePlus5Tは公式のイメージが配布されており、手軽にRomを変えることができます。アップデートも端末の設定から行うことが出来き、とても便利です。
+しかし、表題にある通りLineage OS 16 -> Lineage OS 17.1 のようなアップデートは設定から行えず、パソコンから行う形になります。
+今回はそのアップデートの方法について、前(15から16)までと変わっていたため簡単にまとめました。
+(なお、現在はZoomやmeet用のWebカメラとして役割を任されています)
+ドキュメントを読む 読め アップデートについてのドキュメント
+ Firmwareを更新し、TWRPから「Advance -> ADB sideloadみたいなやつ」を選択し、パソコンから更新するイメージをadb sideloadするだけです。
+Open GAPPSを入れている人は起動する前に、一緒にsideloadしましょう。
+sideloadはいい感じに差分データーをインストールしてくれるため、特にリセットをする必要もなく、アップデートをインストールできます。便利ですね。
+ よかったね">
+<meta name=author content="naf">
+<link rel="preload stylesheet" as=style href=https://auriga.dev/main.min.css>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3761835579827953" crossorigin=anonymous></script>
+<link rel=preload as=image href=https://auriga.dev/theme.svg>
+<link rel=preload as=image href="https://www.gravatar.com/avatar/2a88441d3f004954a314d65f02c7efe0?s=160&d=identicon">
+<link rel=preload as=image href=https://auriga.dev/github.svg>
+<link rel=preload as=image href=https://auriga.dev/mastodon.svg>
+<link rel=preload as=image href=https://auriga.dev/rss.svg>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css integrity=sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI crossorigin=anonymous>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js integrity=sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script>
+<script>document.addEventListener('DOMContentLoaded',()=>renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:!0},{left:'$',right:'$',display:!1}],throwOnError:!1}))</script>
+<link rel=icon href=https://auriga.dev/favicon.ico>
+<link rel=apple-touch-icon href=https://auriga.dev/apple-touch-icon.png>
+<meta name=generator content="Hugo 0.90.1">
+<meta itemprop=name content="LineageOS 16から17.1にアップデートした">
+<meta itemprop=description content="naaaaaaaaaaafです。
+OnePlus5T君は、デフォルトでOxygenOSとかいうよく分からんOSが入っています。ググってみるとOxygenOSの良い点みたいな記事 もあるのですが、ピュアっぽいAndroidを使いたかったので、2年前にこのスマホを買った時から Lineage OSを導入しています。
+Lineage OS のサイトを見ると分かるように、OnePlus5Tは公式のイメージが配布されており、手軽にRomを変えることができます。アップデートも端末の設定から行うことが出来き、とても便利です。
+しかし、表題にある通りLineage OS 16 -> Lineage OS 17.1 のようなアップデートは設定から行えず、パソコンから行う形になります。
+今回はそのアップデートの方法について、前(15から16)までと変わっていたため簡単にまとめました。
+(なお、現在はZoomやmeet用のWebカメラとして役割を任されています)
+ドキュメントを読む 読め アップデートについてのドキュメント
+ Firmwareを更新し、TWRPから「Advance -> ADB sideloadみたいなやつ」を選択し、パソコンから更新するイメージをadb sideloadするだけです。
+Open GAPPSを入れている人は起動する前に、一緒にsideloadしましょう。
+sideloadはいい感じに差分データーをインストールしてくれるため、特にリセットをする必要もなく、アップデートをインストールできます。便利ですね。
+ よかったね"><meta itemprop=datePublished content="2020-12-20T10:00:00+09:00">
+<meta itemprop=dateModified content="2020-12-20T10:00:00+09:00">
+<meta itemprop=wordCount content="30">
+<meta itemprop=keywords content>
+<meta property="og:title" content="LineageOS 16から17.1にアップデートした">
+<meta property="og:description" content="naaaaaaaaaaafです。
+OnePlus5T君は、デフォルトでOxygenOSとかいうよく分からんOSが入っています。ググってみるとOxygenOSの良い点みたいな記事 もあるのですが、ピュアっぽいAndroidを使いたかったので、2年前にこのスマホを買った時から Lineage OSを導入しています。
+Lineage OS のサイトを見ると分かるように、OnePlus5Tは公式のイメージが配布されており、手軽にRomを変えることができます。アップデートも端末の設定から行うことが出来き、とても便利です。
+しかし、表題にある通りLineage OS 16 -> Lineage OS 17.1 のようなアップデートは設定から行えず、パソコンから行う形になります。
+今回はそのアップデートの方法について、前(15から16)までと変わっていたため簡単にまとめました。
+(なお、現在はZoomやmeet用のWebカメラとして役割を任されています)
+ドキュメントを読む 読め アップデートについてのドキュメント
+ Firmwareを更新し、TWRPから「Advance -> ADB sideloadみたいなやつ」を選択し、パソコンから更新するイメージをadb sideloadするだけです。
+Open GAPPSを入れている人は起動する前に、一緒にsideloadしましょう。
+sideloadはいい感じに差分データーをインストールしてくれるため、特にリセットをする必要もなく、アップデートをインストールできます。便利ですね。
+ よかったね">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://auriga.dev/post/lineage-upgrade/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2020-12-20T10:00:00+09:00">
+<meta property="article:modified_time" content="2020-12-20T10:00:00+09:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="LineageOS 16から17.1にアップデートした">
+<meta name=twitter:description content="naaaaaaaaaaafです。
+OnePlus5T君は、デフォルトでOxygenOSとかいうよく分からんOSが入っています。ググってみるとOxygenOSの良い点みたいな記事 もあるのですが、ピュアっぽいAndroidを使いたかったので、2年前にこのスマホを買った時から Lineage OSを導入しています。
+Lineage OS のサイトを見ると分かるように、OnePlus5Tは公式のイメージが配布されており、手軽にRomを変えることができます。アップデートも端末の設定から行うことが出来き、とても便利です。
+しかし、表題にある通りLineage OS 16 -> Lineage OS 17.1 のようなアップデートは設定から行えず、パソコンから行う形になります。
+今回はそのアップデートの方法について、前(15から16)までと変わっていたため簡単にまとめました。
+(なお、現在はZoomやmeet用のWebカメラとして役割を任されています)
+ドキュメントを読む 読め アップデートについてのドキュメント
+ Firmwareを更新し、TWRPから「Advance -> ADB sideloadみたいなやつ」を選択し、パソコンから更新するイメージをadb sideloadするだけです。
+Open GAPPSを入れている人は起動する前に、一緒にsideloadしましょう。
+sideloadはいい感じに差分データーをインストールしてくれるため、特にリセットをする必要もなく、アップデートをインストールできます。便利ですね。
+ よかったね">
+<link rel=canonical href=https://auriga.dev/post/lineage-upgrade/>
+</head>
+<body class="text-black duration-200 ease-out dark:text-white">
+<header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+<div class="relative z-50 mr-auto flex items-center">
+<a class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold" href=https://auriga.dev/>Auriga.dev</a>
+<div class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]" role=button aria-label=Dark></div>
+</div>
+<div class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden" role=button aria-label=Menu></div>
+<script>const htmlClass=document.documentElement.classList;setTimeout(()=>{htmlClass.remove('not-ready')},10);const btnMenu=document.querySelector('.btn-menu');btnMenu.addEventListener('click',()=>{htmlClass.toggle('open')});const metaTheme=document.querySelector('meta[name="theme-color"]'),lightBg='#faf8f1'.replace(/"/g,''),setDark=a=>{metaTheme.setAttribute('content',a?'#000':lightBg),htmlClass[a?'add':'remove']('dark'),localStorage.setItem('dark',a)},darkScheme=window.matchMedia('(prefers-color-scheme: dark)');if(htmlClass.contains('dark'))setDark(!0);else{const a=localStorage.getItem('dark');setDark(a?a==='true':darkScheme.matches)}darkScheme.addEventListener('change',a=>{setDark(a.matches)});const btnDark=document.querySelector('.btn-dark');btnDark.addEventListener('click',()=>{setDark(localStorage.getItem('dark')!=='true')})</script>
+<div class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none">
+<nav class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6">
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./github.svg) href=https://github.com/naaaaaaaaaaaf target=_blank rel=me>
+github
+</a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./mastodon.svg) href=https://mastodon.xn--q9jyb4c/@naf target=_blank rel=me>
+mastodon
+</a>
+<a class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6" style=--url:url(./rss.svg) href=https://auriga.dev/index.xml target=_blank rel=alternate>
+rss
+</a>
+</nav>
+</div>
+</header>
+<main class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert">
+<article>
+<header class=mb-16>
+<h1 class="!my-0 pb-2.5">LineageOS 16から17.1にアップデートした</h1>
+<div class="text-sm antialiased opacity-60">
+<time>Dec 20, 2020</time>
+</div>
+</header>
+<section><figure><img src=/img/PXL_20201217_060424201-1024x768.jpg>
+</figure>
+<p>naaaaaaaaaaafです。</p>
+<p>OnePlus5T君は、デフォルトでOxygenOSとかいうよく分からんOSが入っています。ググってみると<a href=https://www.gizmodo.jp/2019/07/7-ways-oneplus-and-oxygenos-beat-googles-stock-android-1836311751.html>OxygenOSの良い点みたいな記事</a> もあるのですが、ピュアっぽいAndroidを使いたかったので、2年前にこのスマホを買った時から <a href=https://lineageos.org/>Lineage OS</a>を導入しています。</p>
+<p>Lineage OS のサイトを見ると分かるように、OnePlus5Tは公式のイメージが配布されており、手軽にRomを変えることができます。アップデートも端末の設定から行うことが出来き、とても便利です。</p>
+<p>しかし、表題にある通りLineage OS 16 -> Lineage OS 17.1 のようなアップデートは設定から行えず、パソコンから行う形になります。</p>
+<p>今回はそのアップデートの方法について、前(15から16)までと変わっていたため簡単にまとめました。</p>
+<p>(なお、現在はZoomやmeet用のWebカメラとして役割を任されています)</p>
+<h2 id=ドキュメントを読む>ドキュメントを読む</h2>
+<p>読め </p>
+<p><a href=https://wiki.lineageos.org/devices/dumpling/upgrade>アップデートについてのドキュメント</a></p>
+<figure><img src=/img/image-1024x568.png>
+</figure>
+<p>Firmwareを更新し、TWRPから「Advance -> ADB sideloadみたいなやつ」を選択し、パソコンから更新するイメージをadb sideloadするだけです。</p>
+<p>Open GAPPSを入れている人は<strong>起動する前に</strong>、一緒にsideloadしましょう。</p>
+<p>sideloadはいい感じに差分データーをインストールしてくれるため、特にリセットをする必要もなく、アップデートをインストールできます。便利ですね。</p>
+<figure><img src=/img/9126b486bd03fc9c-512x1024.png>
+</figure>
+<p>よかったね</p>
+</section>
+</article>
+</main>
+<footer class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60">
+<div class=mr-auto>
+&copy; 2024
+<a class=link href=https://auriga.dev/>Auriga.dev</a>
+</div>
+<a class="link mx-6" href=https://gohugo.io/ rel=noopener target=_blank>Powered by Hugo️️</a>️
+<a class=link href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>✎ Paper</a>
+</footer>
+</body>
+</html>
